@@ -1,0 +1,8 @@
+.autotest
+History.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+bin/github_contribs
+lib/github_contribs.rb
+test/test_github_contribs.rb

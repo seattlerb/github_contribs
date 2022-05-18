@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby -ws
+
+$v ||= false
+
+require "github_contribs"
+
+name = ARGV.shift || "zenspider"
+last = (ARGV.shift || (Time.now.year - 10)).to_i
+
+gh = GithubContribs.new
+
+gh.generate name, last
