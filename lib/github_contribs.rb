@@ -31,18 +31,20 @@ class GithubContribs
     Nokogiri::HTML File.read path
   end
 
-  def generate name, last
-    puts <<~EOM
+  def generate name, last, io = $stdout, testing = false
+    io.puts <<~EOM
       <!DOCTYPE html>
       <html lang="en">
     EOM
 
-    FileUtils.rm_f ".#{name}.#{Time.now.year}.html" # always fetch this fresh
+    unless testing then
+      FileUtils.rm_f ".#{name}.#{Time.now.year}.html" # always fetch this fresh
+    end
     html = get name, Time.now.year
 
-    puts html.at_css("head").to_html
-    puts %(  <body>)
-    puts html.css("script").to_html
+    io.puts html.at_css("head").to_html
+    io.puts %(  <body>)
+    io.puts html.css("script").to_html
 
     Time.now.year.downto(last).each do |year|
       graph = get(name, year)
@@ -58,16 +60,16 @@ class GithubContribs
         .remove_class("text-center")
         .remove_class("flex-xl-items-center")
 
-      puts graph.to_html
+      io.puts graph.to_html
     end # years
 
-    puts <<~EOM
+    io.puts <<~EOM
       <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
         <div class="Popover-message Popover-message--bottom-left Popover-message--large Box box-shadow-large" style="width:360px;"></div>
       </div>
     EOM
 
-    puts <<~EOM
+    io.puts <<~EOM
         </body>
       </html>
     EOM
