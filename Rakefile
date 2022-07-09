@@ -10,7 +10,7 @@ Hoe.plugin :rdoc
 Hoe.spec "github_contribs" do
   developer "Ryan Davis", "ryand-ruby@zenspider.com"
 
-  dependency "nokogiri", "~> 1.12.0"
+  dependency "nokogiri", "~> 1.12"
 
   license "MIT"
 end
