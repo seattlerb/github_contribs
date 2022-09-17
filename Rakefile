@@ -12,6 +12,8 @@ Hoe.spec "github_contribs" do
 
   dependency "nokogiri", "~> 1.12"
 
+  self.isolate_multiruby = true # for nokogiri
+
   license "MIT"
 end
 
