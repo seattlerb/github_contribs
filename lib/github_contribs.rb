@@ -8,6 +8,9 @@ class GithubContribs
   VERSION = "1.0.0"
 
   def oauth_token
+    return @token if defined? @token
+
+    @token = ENV["GITHUB_TOKEN"]
     @token ||= begin
                  data = YAML.load_file File.expand_path "~/.config/gh/hosts.yml"
                  data && data.dig("github.com", "oauth_token")
