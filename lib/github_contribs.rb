@@ -5,7 +5,7 @@ require "open-uri"
 require "yaml"
 
 class GithubContribs
-  VERSION = "1.0.0"
+  VERSION = "1.1.0"
 
   def oauth_token
     @token ||= ENV["GITHUB_TOKEN"] || begin
