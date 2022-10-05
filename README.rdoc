@@ -12,7 +12,7 @@ from github and assembles them into a unified view.
 
 * Helps visualize patterns across the years.
 * See the effects of major life events (eg marriage, baby, depression).
-* Uses ~/.config/gh/hosts.yml for authentication (generate via `gh auth login`).
+* Uses GITHUB_TOKEN env var or ~/.config/gh/hosts.yml for authentication (generate via `gh auth login`).
 * Caches all previous years (current year is always generated).
 * Defaults to 10 years, but takes an optional year.
 
