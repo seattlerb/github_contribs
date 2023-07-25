@@ -19,6 +19,6 @@ class TestGithubContribs < Minitest::Test
     gh.generate name, last, io, :testing
 
     assert_includes str, "<title>zenspider (Ryan Davis) · GitHub</title>"
-    assert_match(/<svg width="\d+" height="\d+" class="js-calendar-graph-svg">/, str)
+    assert_match(/div class="js-calendar-graph /, str)
   end
 end
