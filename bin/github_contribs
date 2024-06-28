@@ -9,7 +9,7 @@ if ARGV.empty? then
 end
 
 name = ARGV.shift
-last = (ARGV.shift || (Time.now.year - 10)).to_i
+last = ARGV.shift
 
 gh = GithubContribs.new
 
