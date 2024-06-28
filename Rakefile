@@ -10,8 +10,6 @@ Hoe.plugin :rdoc
 Hoe.spec "github_contribs" do
   developer "Ryan Davis", "ryand-ruby@zenspider.com"
 
-  dependency "nokogiri", "~> 1.12"
-
   self.isolate_multiruby = true # for nokogiri
 
   license "MIT"
@@ -19,7 +17,7 @@ end
 
 task :run => :isolate do
   WHO = ENV["U"] || "zenspider 1998"
-  ruby "-Ilib bin/github_contribs #{WHO}"
+  ruby "-Ilib bin/github_contribs -v #{WHO}"
 end
 
 # vim: syntax=ruby
