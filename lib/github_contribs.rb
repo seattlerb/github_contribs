@@ -1,5 +1,6 @@
 require "fileutils"
 require "json"
+require "date"
 
 class GithubContribs
   VERSION = "2.0.0"
@@ -84,7 +85,7 @@ class GithubContribs
     # HACK: make it know the years automatically
     contribs = load_all name, last..Time.now.year
 
-    d0, dN = Date.parse(contribs.keys.min), Date.today
+    d0, dN = Date.new(last), Date.today
 
     min, max = contribs.values.minmax
 
