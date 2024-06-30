@@ -16,7 +16,7 @@ Hoe.spec "github_contribs" do
 end
 
 task :run => :isolate do
-  WHO = ENV["U"] || "zenspider 1998"
+  WHO = ENV["U"] || "zenspider"
   ruby "-Ilib bin/github_contribs -v #{WHO}"
 end
 
