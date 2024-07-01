@@ -1,3 +1,17 @@
+=== 2.0.0 / 2024-07-01
+
+* 2 major enhancements:
+
+  * Completely rewrote data gathering to use graphql. Caches json per year.
+  * Completely rewrote html generation to be from scratch. Much cleaner.
+
+* 4 minor enhancements:
+
+  * Built a legend and non-intrusive popups to provide better UI.
+  * Dropped nokogiri as a dependency. Now using gh cmdline instead of scraping. This might change.
+  * No longer defaults to the last 10 years. Now does *all* years if start is not specified.
+  * Scale all contributions against min/max to make it easier to compare.
+
 === 1.1.0 / 2022-10-05
 
 * 1 minor enhancement:
