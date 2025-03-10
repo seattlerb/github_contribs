@@ -37,15 +37,17 @@ class GithubContribs
                      "-F", "userName=#{name}",
                      "-F", "from=#{year}-01-01T00:00:00",
                      "-f", "query=%s" % [QUERY])
-        .dig(0, "data", "user", # JFC
-             "contributionsCollection", "contributionCalendar",
+        .dig(0,
+             "data",
+             "user", # JFC
+             "contributionsCollection",
+             "contributionCalendar",
              "weeks")
-
-      data = data.map { |h| h["contributionDays"] }
-      data = data.map { |a| a.to_h { |h| [h["date"], h["contributionCount"]] } }
-      data = data.reduce(&:merge).sort.to_h
-      data = data.select { |k,v| k.start_with? "#{year}" } # edges of calendar
-      data = data.select { |k,v| v > 0 }
+        .map { |h| h["contributionDays"] }
+        .map { |a| a.to_h { |h| [h["date"], h["contributionCount"]] } }
+        .reduce(&:merge).sort.to_h
+        .select { |k,v| k.start_with? "#{year}" } # edges of calendar
+        .select { |k,v| v > 0 }
 
       File.write path, JSON.pretty_generate(data)
     end
