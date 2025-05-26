@@ -3,7 +3,7 @@ require "json"
 require "date"
 
 class GithubContribs
-  VERSION = "2.0.0"
+  VERSION = "2.0.1"
 
   def graphql(*args)
     IO.popen(["gh", "api", "graphql", *args]) { |io| JSON.parse(io.read) }
